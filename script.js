@@ -33,15 +33,12 @@ list.append(item);
 
 });
 
-document.querySelector('#subject-note').textContent=
+document.querySelector('#subject-note').textContent =
 `Subject successfully identified target after ${guesses.length} attempt${guesses.length===1?'':'s'}. Brain remains labyrinthine.`;
 
 document.querySelector('#record').classList.add('show');
 
 document.querySelector('#record').setAttribute('aria-hidden','false');
-
-}
-document.querySelector('#verification').classList.remove('show');
 
 setTimeout(function(){
 
