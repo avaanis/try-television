@@ -19,6 +19,30 @@ function showRecord(){
 
 document.querySelector('#verification').classList.remove('show');
 
+const list=document.querySelector('#guess-log');
+
+list.innerHTML="";
+
+guesses.forEach((guess,i)=>{
+
+const item=document.createElement('li');
+
+item.textContent=`${String(i+1).padStart(2,'0')}  ${guess.word}`;
+
+list.append(item);
+
+});
+
+document.querySelector('#subject-note').textContent=
+`Subject successfully identified target after ${guesses.length} attempt${guesses.length===1?'':'s'}. Brain remains labyrinthine.`;
+
+document.querySelector('#record').classList.add('show');
+
+document.querySelector('#record').setAttribute('aria-hidden','false');
+
+}
+document.querySelector('#verification').classList.remove('show');
+
 setTimeout(function(){
 
 window.location.href="https://canva.link/ogadl70s5o96e46";
