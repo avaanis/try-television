@@ -40,11 +40,6 @@ document.querySelector('#record').classList.add('show');
 
 document.querySelector('#record').setAttribute('aria-hidden','false');
 
-setTimeout(function(){
-
-window.location.href="https://canva.link/ogadl70s5o96e46";
-
-},1000);
 
 }function showRetry(){const modal=document.querySelector('#retry-modal');modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.querySelector('#retry-button').focus()}
 function resetGame(){row=0;current='';guesses=[];locked=false;hintIndex=0;const modal=document.querySelector('#retry-modal');modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.querySelectorAll('.tile').forEach(tile=>{tile.textContent='';tile.className='tile'});document.querySelectorAll('.key').forEach(key=>key.classList.remove('absent','present','correct'))}
