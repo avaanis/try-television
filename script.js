@@ -15,8 +15,17 @@ function submit(){if(current.length<5){notify('Not enough letters');shakeRow();r
 function evaluate(word){const states=Array(5).fill('absent'), pool=answer.split('');for(let i=0;i<5;i++)if(word[i]===answer[i]){states[i]='correct';pool[i]=null}for(let i=0;i<5;i++)if(states[i]!=='correct'){const index=pool.indexOf(word[i]);if(index!==-1){states[i]='present';pool[index]=null}}return states}
 function updateKey(letter,state){const key=document.querySelector(`[data-key="${letter}"]`);const old=['absent','present','correct'].find(x=>key.classList.contains(x));if(!old||rank[state]>rank[old]){if(old)key.classList.remove(old);key.classList.add(state)}}
 function startVerification(){document.querySelector('#verification').classList.add('show');const label=document.querySelector('#verification-text');const lines=['VERIFYING...','ACCESSING ARCHIVE...','DECRYPTING...'];let i=0;const timer=setInterval(()=>{i++;if(i<lines.length)label.textContent=lines[i];else{clearInterval(timer);showRecord()}},950)}
-function showRecord(){document.querySelector('#verification').classList.remove('show');const list=document.querySelector('#guess-log');guesses.forEach((guess,i)=>{const item=document.createElement('li');item.textContent=`${String(i+1).padStart(2,'0')}  ${guess.word}`;list.append(item)});document.querySelector('#subject-note').textContent=`Subject successfully identified target after ${guesses.length} attempt${guesses.length===1?'':'s'}. Brain remains labyrinthine.`;document.querySelector('#record').classList.add('show')}
-function showRetry(){const modal=document.querySelector('#retry-modal');modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.querySelector('#retry-button').focus()}
+function showRecord(){
+
+document.querySelector('#verification').classList.remove('show');
+
+setTimeout(function(){
+
+window.location.href="https://canva.link/ogadl70s5o96e46";
+
+},1000);
+
+}function showRetry(){const modal=document.querySelector('#retry-modal');modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.querySelector('#retry-button').focus()}
 function resetGame(){row=0;current='';guesses=[];locked=false;hintIndex=0;const modal=document.querySelector('#retry-modal');modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.querySelectorAll('.tile').forEach(tile=>{tile.textContent='';tile.className='tile'});document.querySelectorAll('.key').forEach(key=>key.classList.remove('absent','present','correct'))}
 document.querySelector('#retry-button').addEventListener('click',resetGame);
 document.querySelector('#hint-button').addEventListener('click',event=>{event.currentTarget.blur();hintIndex++;notify('Try Gravel')});
