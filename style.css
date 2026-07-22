@@ -17,14 +17,24 @@
 *::after { box-sizing: border-box; }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: monospace;
-  font-weight: 600;
-}
 
+    min-height:100vh;
+    margin:0;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(62,191,193,.08),
+        transparent 45%
+    ),
+    var(--bg);
+
+    color:var(--text);
+
+    font-family:monospace;
+    font-weight:600;
+
+}
 button { font: inherit; }
 button:focus-visible,
 a:focus-visible { outline: 2px solid var(--correct); outline-offset: 3px; }
@@ -268,4 +278,389 @@ a:focus-visible { outline: 2px solid var(--correct); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+.radar{
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+    border:1px solid rgba(0,255,255,.3);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+   FIX GLOBAL OVERFLOW
+   =========================== */
+
+html,
+body {
+
+    width:100%;
+    max-width:100%;
+
+    overflow-x:hidden;
+
+}
+
+
+body {
+
+    position:relative;
+
+}
+
+
+
+/* ===========================
+   BACKGROUND SCANNER SYSTEM
+   =========================== */
+
+
+.scanner-background {
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    opacity:.45;
+
+}
+
+
+
+/* individual scanners */
+
+.scanner {
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(62,191,193,.35);
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(62,191,193,.12),
+        transparent 65%
+    );
+
+
+    box-shadow:
+
+    0 0 25px rgba(62,191,193,.18),
+    inset 0 0 25px rgba(62,191,193,.12);
+
+
+    overflow:hidden;
+
+}
+
+
+
+/* radar rings */
+
+.scanner::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:25px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(62,191,193,.25);
+
+
+    box-shadow:
+
+    0 0 0 35px rgba(62,191,193,.05),
+    0 0 0 70px rgba(62,191,193,.04);
+
+}
+
+
+
+/* radar sweep */
+
+.scanner::after {
+
+    content:"";
+
+    position:absolute;
+
+
+    width:50%;
+    height:50%;
+
+
+    top:0;
+    left:50%;
+
+
+    transform-origin:0% 100%;
+
+
+    background:
+
+    linear-gradient(
+        45deg,
+        rgba(62,191,193,.45),
+        transparent
+    );
+
+
+    animation:
+
+    radarSweep 4s linear infinite;
+
+}
+
+
+
+/* scanner locations */
+
+.scanner-one {
+
+    top:10%;
+    left:5%;
+
+    animation:
+
+    floatScanner 12s ease-in-out infinite;
+
+}
+
+
+
+.scanner-two {
+
+    top:45%;
+    right:5%;
+
+    width:140px;
+    height:140px;
+
+    animation:
+
+    floatScanner 16s ease-in-out infinite reverse;
+
+}
+
+
+
+.scanner-three {
+
+    bottom:5%;
+    left:35%;
+
+    width:110px;
+    height:110px;
+
+
+    animation:
+
+    floatScanner 20s ease-in-out infinite;
+
+}
+
+
+
+/* scanner animations */
+
+@keyframes radarSweep {
+
+
+    from {
+
+        transform:rotate(0deg);
+
+    }
+
+
+    to {
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+
+@keyframes floatScanner {
+
+
+    0%,100% {
+
+        transform:translate(0,0);
+
+    }
+
+
+    50% {
+
+        transform:translate(25px,20px);
+
+    }
+
+}
+
+
+
+
+
+/* ===========================
+   HUD GRID BACKGROUND
+   =========================== */
+
+
+.hud-grid {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    width:100%;
+    height:100%;
+
+
+    pointer-events:none;
+
+
+    overflow:hidden;
+
+
+    z-index:-3;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        rgba(62,191,193,.07) 1px,
+
+        transparent 1px
+
+    ),
+
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(62,191,193,.07) 1px,
+
+        transparent 1px
+
+    );
+
+
+    background-size:
+
+    50px 50px;
+
+
+
+    mask-image:
+
+    radial-gradient(
+
+        circle at center,
+
+        black,
+
+        transparent 75%
+
+    );
+
+
+
+    opacity:.35;
+
+
+}
+
+
+
+.hud-grid::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        180deg,
+
+        transparent,
+
+        rgba(62,191,193,.18),
+
+        transparent
+
+    );
+
+
+
+    animation:
+
+    gridScan 6s linear infinite;
+
+
+}
+
+
+
+@keyframes gridScan {
+
+
+    from {
+
+        transform:translateY(-100%);
+
+    }
+
+
+    to {
+
+        transform:translateY(100%);
+
+    }
+
 }
