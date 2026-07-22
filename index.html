@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Wordle</title>
+<title>WORDLE</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,20 +16,35 @@
 <body>
 
 
-<!-- BACKGROUND HUD SYSTEM -->
+<!-- BACKGROUND RADAR SYSTEM -->
 
-<div class="hud-grid"></div>
+<div class="radar-system">
+
+    <div class="radar">
+
+        <div class="radar-sweep"></div>
+
+        <div class="radar-dot"></div>
+
+    </div>
 
 
-<div class="scanner-background">
+    <div class="radar-data">
 
-    <div class="scanner scanner-one"></div>
+        <p>THIRDCOMM NETWORK</p>
 
-    <div class="scanner scanner-two"></div>
+        <p>STATUS: ONLINE</p>
 
-    <div class="scanner scanner-three"></div>
+        <p>SCANNING WORD DATABASE...</p>
+
+        <p>SIGNAL: 98%</p>
+
+        <p>LOCATION: UNKNOWN</p>
+
+    </div>
 
 </div>
+
 
 
 
@@ -40,7 +55,7 @@
 
     <div class="header-actions">
 
-        <button id="hint-button" class="hint-button" type="button">
+        <button id="hint-button" class="hint-button">
             HINT
         </button>
 
@@ -54,7 +69,7 @@
 
 <main>
 
-    <section id="board" class="board" aria-label="Wordle game board"></section>
+<section id="board" class="board" aria-label="Wordle game board"></section>
 
 </main>
 
@@ -62,88 +77,25 @@
 
 
 
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="toast" class="toast"></div>
 
 
 
 
 
-<section id="keyboard" class="keyboard" aria-label="On-screen keyboard"></section>
-
-
-
-
-
-
-
-<section id="verification" class="verification" aria-live="assertive" aria-hidden="true">
-
-    <p id="verification-text">
-        VERIFYING...
-    </p>
-
-</section>
-
-<section id="record" class="record" aria-hidden="true">
-
-
-    <div class="record-content">
-
-
-        <p class="record-eyebrow">
-            CLASSIFIED // EYES ONLY
-        </p>
-
-
-
-
-        <h2>
-            THIRDCOMM INTERNAL RECORD
-        </h2>
-
-
-
-
-        <div class="rule"></div>
-
-
-
-
-
-        <h3>
-            GUESS LOG
-        </h3>
-
-
-
-
-        <ol id="guess-log" class="guess-log"></ol>
-
-
-
-
-
-        <p id="subject-note" class="subject-note"></p>
+<section id="keyboard" class="keyboard"></section>
 
 
 
 
 
 
-        <a class="archive-button"
-        href="https://canva.link/ogadl70s5o96e46">
 
-            ACCESS ARCHIVE
+<section id="verification" class="verification">
 
-        </a>
-
-
-
-
-
-
-    </div>
-
+<p id="verification-text">
+VERIFYING...
+</p>
 
 </section>
 
@@ -153,37 +105,73 @@
 
 
 
+<section id="record" class="record">
 
 
-<section id="retry-modal" class="retry-modal" aria-hidden="true" role="dialog" aria-modal="true">
+<div class="record-content">
 
 
-
-    <div class="retry-panel">
-
-
-
-        <h2 id="retry-title">
-            Out of guesses
-        </h2>
+<p class="record-eyebrow">
+CLASSIFIED // EYES ONLY
+</p>
 
 
+<h2>
+THIRDCOMM INTERNAL RECORD
+</h2>
 
 
-        <button id="retry-button" type="button">
-            TRY AGAIN
-        </button>
+<div class="rule"></div>
 
 
+<h3>
+GUESS LOG
+</h3>
 
 
-    </div>
+<ol id="guess-log" class="guess-log"></ol>
 
+
+<p id="subject-note" class="subject-note"></p>
+
+
+<a class="archive-button"
+href="https://canva.link/ogadl70s5o96e46">
+
+ACCESS ARCHIVE
+
+</a>
+
+
+</div>
 
 
 </section>
 
 
+
+
+
+
+<section id="retry-modal" class="retry-modal">
+
+
+<div class="retry-panel">
+
+<h2 id="retry-title">
+Out of guesses
+</h2>
+
+
+<button id="retry-button">
+TRY AGAIN
+</button>
+
+
+</div>
+
+
+</section>
 
 
 
