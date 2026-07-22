@@ -292,16 +292,27 @@ a:focus-visible { outline: 2px solid var(--correct); outline-offset: 3px; }
     overflow:hidden;
 
 }
+/* ==========================
+   BASE
+   ========================== */
 
-/* ===========================
-   FIX GLOBAL OVERFLOW
-   =========================== */
+
+*,
+*::before,
+*::after {
+
+    box-sizing:border-box;
+
+}
+
 
 html,
 body {
 
+    margin:0;
+
     width:100%;
-    max-width:100%;
+    height:100%;
 
     overflow-x:hidden;
 
@@ -310,185 +321,280 @@ body {
 
 body {
 
-    position:relative;
-
-}
-
-
-
-/* ===========================
-   BACKGROUND SCANNER SYSTEM
-   =========================== */
-
-
-.scanner-background {
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:-2;
-
-    opacity:.45;
-
-}
-
-
-
-/* individual scanners */
-
-.scanner {
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(62,191,193,.35);
-
+    min-height:100vh;
 
     background:
 
     radial-gradient(
+        circle at center,
+        rgba(62,191,193,.08),
+        transparent 45%
+    ),
+
+    #060a08;
+
+
+    color:#d6dbc7;
+
+    font-family:monospace;
+
+    font-weight:600;
+
+}
+
+
+
+/* ==========================
+   RADAR HUD
+   ========================== */
+
+
+.radar-system {
+
+
+    position:fixed;
+
+
+    right:40px;
+
+    bottom:35px;
+
+
+    z-index:-1;
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+
+    opacity:.75;
+
+
+}
+
+
+
+.radar {
+
+
+    position:relative;
+
+
+    width:260px;
+
+    height:260px;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    1px solid rgba(62,191,193,.6);
+
+
+
+    background:
+
+
+    radial-gradient(
+
         circle,
-        rgba(62,191,193,.12),
+
+        rgba(62,191,193,.18),
+
         transparent 65%
+
     );
 
 
     box-shadow:
 
-    0 0 25px rgba(62,191,193,.18),
-    inset 0 0 25px rgba(62,191,193,.12);
+
+    0 0 40px rgba(62,191,193,.25),
+
+    inset 0 0 40px rgba(62,191,193,.2);
 
 
     overflow:hidden;
 
+
 }
+
+
 
 
 
 /* radar rings */
 
-.scanner::before {
+
+.radar::before {
+
 
     content:"";
 
+
     position:absolute;
 
-    inset:25px;
+
+    inset:35px;
+
 
     border-radius:50%;
 
-    border:1px solid rgba(62,191,193,.25);
+
+    border:
+
+    1px solid rgba(62,191,193,.35);
+
 
 
     box-shadow:
 
-    0 0 0 35px rgba(62,191,193,.05),
-    0 0 0 70px rgba(62,191,193,.04);
+
+    0 0 0 35px rgba(62,191,193,.08),
+
+    0 0 0 70px rgba(62,191,193,.05);
+
 
 }
 
 
 
-/* radar sweep */
 
-.scanner::after {
+/* cross lines */
+
+
+.radar::after {
+
 
     content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+
+    linear-gradient(
+
+        transparent 49%,
+
+        rgba(62,191,193,.25) 50%,
+
+        transparent 51%
+
+    ),
+
+
+    linear-gradient(
+
+        90deg,
+
+        transparent 49%,
+
+        rgba(62,191,193,.25) 50%,
+
+        transparent 51%
+
+    );
+
+
+}
+
+
+
+
+
+.radar-sweep {
+
 
     position:absolute;
 
 
     width:50%;
+
     height:50%;
 
 
     top:0;
+
     left:50%;
 
 
-    transform-origin:0% 100%;
+    transform-origin:left bottom;
 
 
     background:
 
+
     linear-gradient(
+
         45deg,
-        rgba(62,191,193,.45),
+
+        rgba(62,191,193,.6),
+
         transparent
+
     );
 
 
     animation:
 
-    radarSweep 4s linear infinite;
+    sweep 4s linear infinite;
+
 
 }
 
 
 
-/* scanner locations */
+.radar-dot {
 
-.scanner-one {
 
-    top:10%;
-    left:5%;
+    position:absolute;
 
-    animation:
 
-    floatScanner 12s ease-in-out infinite;
+    top:50%;
+
+    left:50%;
+
+
+    width:10px;
+
+    height:10px;
+
+
+    transform:translate(-50%,-50%);
+
+
+    background:#3ebfc1;
+
+
+    border-radius:50%;
+
+
+    box-shadow:
+
+
+    0 0 15px #3ebfc1,
+
+    0 0 30px #3ebfc1;
+
 
 }
 
 
 
-.scanner-two {
-
-    top:45%;
-    right:5%;
-
-    width:140px;
-    height:140px;
-
-    animation:
-
-    floatScanner 16s ease-in-out infinite reverse;
-
-}
 
 
-
-.scanner-three {
-
-    bottom:5%;
-    left:35%;
-
-    width:110px;
-    height:110px;
-
-
-    animation:
-
-    floatScanner 20s ease-in-out infinite;
-
-}
-
-
-
-/* scanner animations */
-
-@keyframes radarSweep {
+@keyframes sweep {
 
 
     from {
@@ -508,159 +614,196 @@ body {
 
 
 
-@keyframes floatScanner {
+/* DATA PANEL */
 
 
-    0%,100% {
-
-        transform:translate(0,0);
-
-    }
+.radar-data {
 
 
-    50% {
-
-        transform:translate(25px,20px);
-
-    }
-
-}
+    color:#3ebfc1;
 
 
+    font-size:12px;
 
 
-
-/* ===========================
-   HUD GRID BACKGROUND
-   =========================== */
+    letter-spacing:.12em;
 
 
-.hud-grid {
+    line-height:1.8;
 
 
-    position:fixed;
+    border-left:
+
+    1px solid rgba(62,191,193,.4);
 
 
-    inset:0;
+    padding-left:18px;
 
 
-    width:100%;
-    height:100%;
+    text-shadow:
 
-
-    pointer-events:none;
-
-
-    overflow:hidden;
-
-
-    z-index:-3;
-
-
-
-    background:
-
-
-    linear-gradient(
-
-        rgba(62,191,193,.07) 1px,
-
-        transparent 1px
-
-    ),
-
-
-    linear-gradient(
-
-        90deg,
-
-        rgba(62,191,193,.07) 1px,
-
-        transparent 1px
-
-    );
-
-
-    background-size:
-
-    50px 50px;
-
-
-
-    mask-image:
-
-    radial-gradient(
-
-        circle at center,
-
-        black,
-
-        transparent 75%
-
-    );
-
-
-
-    opacity:.35;
+    0 0 8px rgba(62,191,193,.5);
 
 
 }
 
 
 
-.hud-grid::after {
+/* ==========================
+   WORDLE UI
+   ========================== */
 
 
-    content:"";
+.topbar {
 
+    height:65px;
+
+    border-bottom:
+
+    1px solid #6c7965;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.topbar h1 {
+
+    margin:0;
+
+    letter-spacing:.12em;
+
+}
+
+
+
+.header-actions {
 
     position:absolute;
 
+    right:20px;
 
-    inset:0;
-
-
-
-    background:
-
-
-    linear-gradient(
-
-        180deg,
-
-        transparent,
-
-        rgba(62,191,193,.18),
-
-        transparent
-
-    );
+}
 
 
 
-    animation:
+.hint-button {
 
-    gridScan 6s linear infinite;
+
+    background:transparent;
+
+
+    border:
+
+    1px solid #6c7965;
+
+
+    color:#d6dbc7;
+
+
+    padding:8px 14px;
 
 
 }
 
 
 
-@keyframes gridScan {
 
 
-    from {
-
-        transform:translateY(-100%);
-
-    }
+.board {
 
 
-    to {
+    display:grid;
 
-        transform:translateY(100%);
 
-    }
+    grid-template-rows:
+
+    repeat(6,70px);
+
+
+    gap:6px;
+
+
+    width:350px;
+
+
+    margin:40px auto;
+
+}
+
+
+
+.row {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(5,1fr);
+
+
+    gap:6px;
+
+
+}
+
+
+
+.tile {
+
+
+    border:
+
+    2px solid #6c7965;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    font-size:35px;
+
+
+}
+
+
+
+/* keep keyboard and popups from changing */
+
+.keyboard {
+
+    margin:auto;
+
+}
+
+
+
+.record,
+.retry-modal,
+.verification {
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
 
 }
