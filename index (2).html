@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WORDLE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- BACKGROUND ATMOSPHERE LAYER -->
+<div class="bg-fx" aria-hidden="true">
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+    <div class="spores" id="spores"></div>
+    <div class="glitch-sweep" id="glitch-sweep"></div>
+    <div class="anomaly-flare" id="anomaly-flare"></div>
+</div>
+
+<!-- BACKGROUND RADAR SYSTEM -->
+<div class="radar-system" aria-hidden="true">
+    <div class="radar">
+        <div class="radar-sweep"></div>
+        <div class="radar-dot"></div>
+    </div>
+    <div class="radar-data">
+        <p>THIRDCOMM NETWORK</p>
+        <p>STATUS: ONLINE</p>
+        <p>SCANNING WORD DATABASE...</p>
+        <p>SIGNAL: 98%</p>
+        <p>LOCATION: UNKNOWN</p>
+    </div>
+</div>
+
+<!-- MIRRORED SIGNAL MONITOR -->
+<div class="signal-monitor" aria-hidden="true">
+    <div class="monitor-ring">
+        <div class="monitor-pulse"></div>
+        <div class="monitor-pulse delay"></div>
+    </div>
+    <div class="monitor-data">
+        <p>SPORE DENSITY: <span id="spore-density">--</span></p>
+        <p>GLITCH INDEX: <span id="glitch-index">STABLE</span></p>
+        <p>ANOMALY: <span id="anomaly-status">NONE</span></p>
+        <p>WATCHING</p>
+    </div>
+</div>
+
+<header class="topbar">
+    <h1>WORDLE</h1>
+    <div class="header-actions">
+        <button id="hint-button" class="hint-button">HINT</button>
+    </div>
+</header>
+
+<main>
+    <section id="board" class="board" aria-label="Wordle game board"></section>
+</main>
+
+<div id="toast" class="toast"></div>
+<section id="keyboard" class="keyboard"></section>
+
+<section id="verification" class="verification">
+    <p id="verification-text">VERIFYING...</p>
+</section>
+
+<section id="record" class="record">
+    <div class="record-content">
+        <p class="record-eyebrow">CLASSIFIED // EYES ONLY</p>
+        <h2>THIRDCOMM INTERNAL RECORD</h2>
+        <div class="rule"></div>
+        <h3>GUESS LOG</h3>
+        <ol id="guess-log" class="guess-log"></ol>
+        <p id="subject-note" class="subject-note"></p>
+        <a class="archive-button" href="https://canva.link/ogadl70s5o96e46">ACCESS ARCHIVE</a>
+    </div>
+</section>
+
+<section id="retry-modal" class="retry-modal">
+    <div class="retry-panel">
+        <h2 id="retry-title">Out of guesses</h2>
+        <button id="retry-button">TRY AGAIN</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
