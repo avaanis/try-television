@@ -16,31 +16,55 @@
 <body>
 
 
-<header class="topbar">
+<!-- BACKGROUND HUD SYSTEM -->
 
-<h1>WORDLE</h1>
+<div class="hud-grid"></div>
 
-<div class="header-actions">
 
-<button id="hint-button" class="hint-button" type="button">
-HINT
-</button>
+<div class="scanner-background">
+
+    <div class="scanner scanner-one"></div>
+
+    <div class="scanner scanner-two"></div>
+
+    <div class="scanner scanner-three"></div>
 
 </div>
+
+
+
+<header class="topbar">
+
+    <h1>WORDLE</h1>
+
+
+    <div class="header-actions">
+
+        <button id="hint-button" class="hint-button" type="button">
+            HINT
+        </button>
+
+    </div>
 
 </header>
 
 
 
+
+
 <main>
 
-<section id="board" class="board" aria-label="Wordle game board"></section>
+    <section id="board" class="board" aria-label="Wordle game board"></section>
 
 </main>
 
 
 
+
+
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+
 
 
 
@@ -49,60 +73,83 @@ HINT
 
 
 
+
+
+
 <section id="verification" class="verification" aria-live="assertive" aria-hidden="true">
 
-<p id="verification-text">
-VERIFYING...
-</p>
+    <p id="verification-text">
+        VERIFYING...
+    </p>
 
 </section>
-
-
-
-
 
 <section id="record" class="record" aria-hidden="true">
 
-<div class="record-content">
+
+    <div class="record-content">
 
 
-<p class="record-eyebrow">
-CLASSIFIED // EYES ONLY
-</p>
-
-
-<h2>
-THIRDCOMM INTERNAL RECORD
-</h2>
-
-
-<div class="rule"></div>
+        <p class="record-eyebrow">
+            CLASSIFIED // EYES ONLY
+        </p>
 
 
 
-<h3>
-GUESS LOG
-</h3>
 
-
-<ol id="guess-log" class="guess-log"></ol>
-
-
-
-<p id="subject-note" class="subject-note"></p>
+        <h2>
+            THIRDCOMM INTERNAL RECORD
+        </h2>
 
 
 
-<a class="archive-button"
-href="https://canva.link/ogadl70s5o96e46">
-ACCESS ARCHIVE
-</a>
+
+        <div class="rule"></div>
 
 
 
-</div>
+
+
+        <h3>
+            GUESS LOG
+        </h3>
+
+
+
+
+        <ol id="guess-log" class="guess-log"></ol>
+
+
+
+
+
+        <p id="subject-note" class="subject-note"></p>
+
+
+
+
+
+
+        <a class="archive-button"
+        href="https://canva.link/ogadl70s5o96e46">
+
+            ACCESS ARCHIVE
+
+        </a>
+
+
+
+
+
+
+    </div>
+
 
 </section>
+
+
+
+
 
 
 
@@ -111,23 +158,33 @@ ACCESS ARCHIVE
 <section id="retry-modal" class="retry-modal" aria-hidden="true" role="dialog" aria-modal="true">
 
 
-<div class="retry-panel">
+
+    <div class="retry-panel">
 
 
-<h2 id="retry-title">
-Out of guesses
-</h2>
+
+        <h2 id="retry-title">
+            Out of guesses
+        </h2>
 
 
-<button id="retry-button" type="button">
-TRY AGAIN
-</button>
 
 
-</div>
+        <button id="retry-button" type="button">
+            TRY AGAIN
+        </button>
+
+
+
+
+    </div>
+
 
 
 </section>
+
+
+
 
 
 
