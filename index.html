@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WORDLE</title>
+<title>UNION ARCHIVE // FILE 02 — WORD LOCK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <!-- BACKGROUND ATMOSPHERE LAYER -->
 <div class="bg-fx" aria-hidden="true">
     <div class="scanlines"></div>
@@ -15,6 +18,7 @@
     <div class="glitch-sweep" id="glitch-sweep"></div>
     <div class="anomaly-flare" id="anomaly-flare"></div>
 </div>
+<div class="scan-beam" aria-hidden="true"></div>
 
 <!-- BACKGROUND RADAR SYSTEM -->
 <div class="radar-system" aria-hidden="true">
@@ -23,7 +27,7 @@
         <div class="radar-dot"></div>
     </div>
     <div class="radar-data">
-        <p>THIRDCOMM NETWORK</p>
+        <p>UNION ARCHIVE</p>
         <p>STATUS: ONLINE</p>
         <p>SCANNING WORD DATABASE...</p>
         <p>SIGNAL: 98%</p>
@@ -45,40 +49,63 @@
     </div>
 </div>
 
-<header class="topbar">
-    <h1>WORDLE</h1>
-    <div class="header-actions">
-        <button id="hint-button" class="hint-button">HINT</button>
-    </div>
-</header>
+<div class="wrap">
+<div class="box">
 
-<main>
-    <section id="board" class="board" aria-label="Wordle game board"></section>
-</main>
+    <div class="stamp">FILE 02 / 07</div>
+
+    <p class="small">UNION ARCHIVE TERMINAL v3.1</p>
+    <p>&gt; CONNECTING...</p>
+    <p>&gt; ACCESS GRANTED</p>
+
+    <hr>
+
+    <header class="topbar">
+        <h1 class="glitch" data-text="WORD LOCK">WORD LOCK</h1>
+        <button id="hint-button" class="hint-button">HINT</button>
+    </header>
+
+    <p class="red">CLASSIFICATION: RESTRICTED</p>
+    <p class="small">Five-character clearance code intercepted. Decrypt it in six attempts to proceed to FILE 02 record.</p>
+
+    <hr>
+
+    <main>
+        <section id="board" class="board" aria-label="Word lock game board"></section>
+    </main>
+
+    <section id="keyboard" class="keyboard"></section>
+
+    <p class="small" style="margin-top:20px;">Awaiting input<span class="cursor">_</span></p>
+
+</div>
+</div>
 
 <div id="toast" class="toast"></div>
-<section id="keyboard" class="keyboard"></section>
 
 <section id="verification" class="verification">
     <p id="verification-text">VERIFYING...</p>
 </section>
 
 <section id="record" class="record">
-    <div class="record-content">
-        <p class="record-eyebrow">CLASSIFIED // EYES ONLY</p>
-        <h2>THIRDCOMM INTERNAL RECORD</h2>
-        <div class="rule"></div>
-        <h3>GUESS LOG</h3>
+    <div class="record-content box">
+        <div class="stamp">FILE 02 / 07</div>
+        <p class="red">CLASSIFICATION: DECRYPTED</p>
+        <h2 class="glitch" data-text="UNION ARCHIVE RECORD">UNION ARCHIVE RECORD</h2>
+        <hr>
+        <p><strong>SUBJECT:</strong> <span class="redacted" tabindex="0">CIPRIKAND</span></p>
+        <p class="small" style="margin-top:12px;"><strong>GUESS LOG</strong></p>
         <ol id="guess-log" class="guess-log"></ol>
         <p id="subject-note" class="subject-note"></p>
-        <a class="archive-button" href="https://canva.link/ogadl70s5o96e46">ACCESS ARCHIVE</a>
+        <a class="button" href="https://canva.link/ogadl70s5o96e46">ACCESS ARCHIVE</a>
     </div>
 </section>
 
 <section id="retry-modal" class="retry-modal">
-    <div class="retry-panel">
-        <h2 id="retry-title">Out of guesses</h2>
-        <button id="retry-button">TRY AGAIN</button>
+    <div class="retry-panel box">
+        <div class="stamp">LOCKED</div>
+        <h2 id="retry-title" class="red">OUT OF ATTEMPTS</h2>
+        <button id="retry-button" class="button">TRY AGAIN</button>
     </div>
 </section>
 
